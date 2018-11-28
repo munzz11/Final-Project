@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -16,17 +17,17 @@ public class Final extends Application {
 
 	Random random = new Random();
 
-	static final int MaxSpeed = 5;
+	
 
 	double Color1 = 200;
-	static final int Particles = 50000;
+	
 
 	private double gravityX, gravityY;
 
-	private double[] x = new double[Particles];
-	private double[] y = new double[Particles];
-	private double[] velocityX = new double[Particles];
-	private double[] velocityY = new double[Particles];
+	private double[] x = new double[inputs.Particles];
+	private double[] y = new double[inputs.Particles];
+	private double[] velocityX = new double[inputs.Particles];
+	private double[] velocityY = new double[inputs.Particles];
 	private Color[] colors = new Color[(int) Color1];
 
 	private PixelWriter pixelWriter;
@@ -35,10 +36,10 @@ public class Final extends Application {
 	@Override
 	public void start(final Stage primaryStage) {
 		primaryStage.setTitle("Final Project");
-		gravityX = 300;
-		gravityY = 300;
+		gravityX = 1920/2;
+		gravityY = 1080/2;
 
-		for (int i = 0; i < Particles; i++) {
+		for (int i = 0; i < inputs.Particles; i++) {
 			x[i] = random.nextDouble() * 1920;
 			y[i] = random.nextDouble() * 1080;
 			velocityX[i] = 0;
@@ -46,8 +47,8 @@ public class Final extends Application {
 		}
 
 		for (int i = 0; i < Color1; i++) {
-			double hue = 240d;
-			colors[i] = Color.hsb(hue, 1d, 1d);
+			
+			colors[i] = Color.hsb(inputs.hue, 1d, 1d);
 		}
 
 		Group root = new Group();
@@ -80,7 +81,7 @@ public class Final extends Application {
 			gfx.setFill(Color.BLACK);
 			gfx.fillRect(0, 0, 1920, 1080);
 
-			for (int i = 0; i < Particles; i++) {
+			for (int i = 0; i < inputs.Particles; i++) {
 				double x1 = x[i];
 				double y1 = y[i];
 
@@ -123,7 +124,7 @@ public class Final extends Application {
 
 				// color logic
 				double hue = Math.sqrt((velocityX[i] * velocityX[i] + velocityY[i] * velocityY[i]));
-				hue /= MaxSpeed;
+				hue /= inputs.MaxSpeed;
 				if (hue > 1)
 					hue = 1;
 				hue *= Color1;
@@ -146,6 +147,25 @@ public class Final extends Application {
 	}
 
 	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Enter value for Color");
+		inputs.hue = input.nextInt();
+		
+		System.out.println("Enter max speed");
+		inputs.MaxSpeed = input.nextInt();
+		
+		System.out.println("Enter number of particles desired");
+		inputs.Particles = input.nextInt();
+		
+		
 		launch(args);
 	}
+	
+	public static class inputs {
+		static int hue;
+		static int MaxSpeed;
+		static int Particles;
+	}
 }
+
