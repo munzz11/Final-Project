@@ -31,7 +31,7 @@ public class Final extends Application {
 	private Color[] colors = new Color[(int) Color1];
 
 	private PixelWriter pixelWriter;
-	private GraphicsContext gfx;
+	private GraphicsContext fx;
 
 	@Override
 	public void start(final Stage primaryStage) {
@@ -53,7 +53,7 @@ public class Final extends Application {
 
 		Group root = new Group();
 		Canvas canvas = new Canvas(1920, 1080);
-		gfx = canvas.getGraphicsContext2D();
+		fx = canvas.getGraphicsContext2D();
 		root.getChildren().add(canvas);
 		Scene scene = new Scene(root, Color.BLACK);
 		primaryStage.setScene(scene);
@@ -78,8 +78,8 @@ public class Final extends Application {
 	class MainGameLoop extends AnimationTimer {
 		@Override
 		public void handle(long now) {
-			gfx.setFill(Color.BLACK);
-			gfx.fillRect(0, 0, 1920, 1080);
+			fx.setFill(Color.BLACK);
+			fx.fillRect(0, 0, 1920, 1080);
 
 			for (int i = 0; i < inputs.Particles; i++) {
 				double x1 = x[i];
@@ -140,7 +140,6 @@ public class Final extends Application {
 	class MouseHandler implements EventHandler<MouseEvent> {
 		@Override
 		public void handle(MouseEvent event) {
-			System.out.println("Mouse Clicked at: ( x: " + event.getSceneX() + ", y: " + event.getSceneY() + ")");
 			gravityX = event.getSceneX();
 			gravityY = event.getSceneY();
 		}
