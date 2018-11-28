@@ -108,21 +108,21 @@ public class Final extends Application {
 					velocityX[i] = 0;
 				}
 				if (x[i] > 1920) {
-					x[i] = 1080;
+					x[i] = 1920;
 					velocityX[i] = 0;
 				}
 				if (y[i] < 0) {
 					y[i] = 0;
 					velocityY[i] = 0;
 				}
-				if (y[i] > 1920) {
+				if (y[i] > 1080) {
 					y[i] = 1080;
 					velocityY[i] = 0;
 				}
 				x[i] += velocityX[i];
 				y[i] += velocityY[i];
 
-				// color logic
+				
 				double hue = Math.sqrt((velocityX[i] * velocityX[i] + velocityY[i] * velocityY[i]));
 				hue /= inputs.MaxSpeed;
 				if (hue > 1)
@@ -159,6 +159,7 @@ public class Final extends Application {
 		
 		
 		launch(args);
+		input.close();
 	}
 	
 	public static class inputs {
