@@ -122,15 +122,9 @@ public class Final extends Application {
 				x[i] += velocityX[i];
 				y[i] += velocityY[i];
 
-				
-				double hue = Math.sqrt((velocityX[i] * velocityX[i] + velocityY[i] * velocityY[i]));
-				hue /= inputs.MaxSpeed;
-				if (hue > 1)
-					hue = 1;
-				hue *= Color1;
+				double hue = Color1;
 				hue--;
-				if (hue < 0)
-					hue = 0;
+			
 
 				pixelWriter.setColor((int) x1, (int) y1, colors[(int) hue]);
 			}
