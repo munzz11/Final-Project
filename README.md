@@ -11,4 +11,5 @@ The program contains paramters which adjust:
 - Max speed of the particles 
 
 ##Demo
+
 ![screen-gif](./Demo.gif)
