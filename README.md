@@ -5,6 +5,10 @@ When run it simulates and unbounded 2d feild with a variable number of particles
 
 The program contains paramters which adjust:
 - Stength of the gravity wells created 
-- Density of the particles in the simulation
-- Number of particles in the simulation 
+- Density of the particles 
+- Number of particles being simulated
+- Color of the particles
+- Max speed of the particles 
 
+##Demo
+![screen-gif](./Demo.gif)
