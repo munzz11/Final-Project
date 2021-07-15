@@ -10,6 +10,6 @@ The program contains paramters which adjust:
 - Color of the particles
 - Max speed of the particles 
 
-##Demo
+## Demo
 
 ![screen-gif](./Demo.gif)
